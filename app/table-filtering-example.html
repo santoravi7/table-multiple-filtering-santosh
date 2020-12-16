@@ -1,0 +1,75 @@
+
+<form style="display: flex" [formGroup]="formControl">
+  <mat-form-field>
+    <input matInput formControlName="id" type="number" min="0" />
+    <mat-placeholder>No. (exact)</mat-placeholder>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="first_name" />
+    <mat-placeholder class="search-filter"> Name (substring)</mat-placeholder>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="last_name" />
+    <mat-placeholder>Last name (exact)</mat-placeholder>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="email" />
+    <mat-placeholder>Email (exact)</mat-placeholder>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="gender" />
+    <mat-placeholder>Gender (exact)</mat-placeholder>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="ip_address" />
+    <mat-placeholder>Ip Address (exact)</mat-placeholder>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="timestamp" />
+    <mat-placeholder>Timestamp (exact)</mat-placeholder>
+  </mat-form-field>
+</form>
+<div class="example-container mat-elevation-z8">
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>No.</mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="first_name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.first_name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="last_name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.last_name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="gender">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Gender</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.gender}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="ip_address">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>IP Address</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.ip_address}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="timestamp">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>TimeStamp</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.timestamp}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>
